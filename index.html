@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOL Draft Guessr</title>
+  <meta name="description" content="Devine les rôles de l'équipe adverse en League of Legends à partir de leurs champions.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-head">
+    <h1>LOL Draft <span>Guessr</span></h1>
+    <p class="tagline">Devine le rôle de chaque champion adverse à partir des taux de sélection par lane.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Champions ennemis <span id="enemy-count" class="count">0/5</span></h2>
+        <button id="clear-btn" class="ghost-btn" title="Tout effacer">Effacer</button>
+      </div>
+
+      <div class="enemy-slots" id="enemy-slots"></div>
+
+      <div class="picker-search">
+        <input type="text" id="champ-search" placeholder="Rechercher un champion…" autocomplete="off">
+        <button id="search-clear" class="search-clear" title="Effacer">✕</button>
+      </div>
+      <div class="picker-grid" id="picker-grid"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Rôles devinés</h2>
+        <span class="hint-inline">Change un rôle pour le verrouiller — le reste est recalculé.</span>
+      </div>
+      <div class="roles" id="roles"></div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <p>Prédiction par maximum de vraisemblance sur les taux de sélection par lane. Données de rôle embarquées (<code>role_data.json</code>), icônes via <a href="https://developer.riotgames.com/docs/lol#data-dragon" target="_blank" rel="noopener">Data Dragon</a>.</p>
+    <p class="disclaimer">Projet non officiel, non affilié à Riot Games.</p>
+  </footer>
+
+  <script src="guesser.js"></script>
+</body>
+</html>
