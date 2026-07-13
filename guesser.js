@@ -104,9 +104,9 @@ function predictRoles(names) {
 }
 
 /* ---------- rendering ---------- */
-function confColor(c) {
-  if (c >= 0.8) return 'var(--conf-high)';
-  if (c >= 0.5) return 'var(--conf-mid)';
+function pickColor(pct) {
+  if (pct >= 55) return 'var(--conf-high)';
+  if (pct >= 25) return 'var(--conf-mid)';
   return 'var(--conf-low)';
 }
 
@@ -167,14 +167,14 @@ function renderRoles() {
     var name = byRole[role];
     var p = name ? pred[name] : null;
     var c = name ? champByName(name) : null;
-    var confPct = p ? Math.round((p.confidence || 0) * 100) : 0;
+    var prPct = p ? Math.round(p.weight != null ? p.weight : 0) : 0;
     html += '<div class="role-row' + (name ? '' : ' empty') + '">' +
       '<div class="role-tag"><span class="role-emoji">' + meta.emoji + '</span>' + meta.label + '</div>' +
       (c ? '<img class="role-champ-icon" src="' + c.icon + '" alt="">' : '<div class="role-champ-icon none"></div>') +
       '<div class="role-info">' +
         '<div class="role-champ-name">' + (name ? esc(name) : '—') + '</div>' +
-        (name ? '<div class="conf-wrap"><div class="conf-bar"><div class="conf-fill" style="width:' + confPct + '%;background:' + confColor(p.confidence) + '"></div></div>' +
-          '<span class="conf-pct">' + (p.locked ? '🔒 verrouillé' : 'confiance ' + confPct + '%') + '</span></div>' : '') +
+        (name ? '<div class="conf-wrap"><div class="conf-bar"><div class="conf-fill" style="width:' + Math.min(100, prPct) + '%;background:' + pickColor(prPct) + '"></div></div>' +
+          '<span class="conf-pct">' + (p.locked ? '🔒 Pick Rate ' + prPct + '%' : 'Pick Rate ' + prPct + '%') + '</span></div>' : '') +
       '</div>' +
       (name ? roleSelectHtml(name, p) : '<span></span>') +
       '</div>';
