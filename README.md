@@ -1,5 +1,7 @@
 # LOL Draft Guessr
 
+[![Website](https://img.shields.io/badge/Website-online-brightgreen.svg)](https://plantim.github.io/LOL-Draft-Guessr/)
+
 Sélectionne jusqu'à 5 champions ennemis : l'outil attribue à chacun le rôle le plus probable via un **assignement global au maximum de vraisemblance** (chaque rôle est unique dans l'équipe). Tu peux forcer le rôle d'un champion (menu déroulant) : le reste est alors recalculé automatiquement.
 
 ## Contenu
