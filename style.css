@@ -31,6 +31,7 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   padding: 0 16px 40px;
+  zoom: 1.25; /* larger by default so no browser zoom needed */
 }
 a { color: var(--gold); }
 
